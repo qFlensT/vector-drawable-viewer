@@ -1,7 +1,17 @@
+import Home from "../pages/home";
+import { ROUTES } from "../shared/constants/routes";
 import "./app.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: ROUTES.HOME,
+    element: <Home />,
+  },
+]);
 
 const App = () => {
-  return <h1 className="bg-teal-100 text-8xl">Hello world</h1>;
+  return <RouterProvider router={router} />;
 };
 
 export default App;
