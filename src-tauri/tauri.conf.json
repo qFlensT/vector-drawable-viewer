@@ -36,9 +36,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "vector-drawable-viewer",
-        "width": 800,
-        "height": 600
+        "title": "Vector Drawable Viewer",
+        "minWidth": 800,
+        "minHeight": 600
       }
     ]
   }
