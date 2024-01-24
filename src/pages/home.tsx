@@ -12,6 +12,13 @@ const HomePage = () => {
       <UiButton variant="warning">Warning</UiButton>
       <UiButton variant="neutral">Neutral</UiButton>
       <UiSpinner />
+      <UiSelect
+        options={[
+          { label: "Hello", value: "1" },
+          { label: "Hello", value: "1" },
+          { label: "Hello", value: "1" },
+        ]}
+      />
       <form action="" className="flex flex-col gap-1">
         <UiTextField
           error="This is an error"
@@ -23,7 +30,6 @@ const HomePage = () => {
           inputProps={{ placeholder: "******", type: "password" }}
         />
       </form>
-      <UiSelect />
     </div>
   );
 };

@@ -27,8 +27,8 @@ const UiTextField = ({
         type="text"
         {...inputProps}
         className={cn(
-          "rounded bg-gray-700 px-2 py-2 text-sm text-slate-100 opacity-60 transition-[opacity,box-shadow] placeholder:text-gray-500 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500",
-          !!error && "opacity-100 ring-2 ring-rose-600 focus:ring-rose-600",
+          "rounded bg-gray-700 px-2 py-2 text-sm text-slate-100 opacity-60 ring-blue-500 transition-[opacity,box-shadow] placeholder:text-gray-500 hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2",
+          !!error && "opacity-100 ring-2 ring-rose-600",
           inputProps?.className,
         )}
       />
