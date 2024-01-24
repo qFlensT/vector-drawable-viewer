@@ -8,6 +8,8 @@
     "build": "tauri build"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@headlessui/tailwindcss": "^0.2.0",
     "@tauri-apps/api": "^1.5.2",
     "clsx": "^2.1.0",
     "react": "^18.2.0",
