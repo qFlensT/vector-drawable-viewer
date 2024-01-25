@@ -3,10 +3,12 @@ import { cn } from "../lib/utils";
 import { Listbox, Transition } from "@headlessui/react";
 import ArrowIcon from "./assets/svg/arrow.svg?react";
 import CheckIcon from "./assets/svg/check.svg?react";
+import CrossIcon from "./assets/svg/cross.svg?react";
 
 export type UiSelectOption = {
   id: string;
   label: string;
+  disabled?: boolean;
   Icon?: ReactNode;
 };
 
@@ -28,11 +30,11 @@ const UiSelect = ({
   onChange,
 }: UiSelectProps) => {
   return (
-    <Listbox value={value} by="id" onChange={onChange}>
-      <div className="relative">
+    <Listbox as={Fragment} value={value} by="id" onChange={onChange}>
+      <div className="relative text-slate-100">
         <Listbox.Button
           className={cn(
-            "grid w-full grid-cols-[min-content,min-content,1fr] items-center justify-items-end gap-2 rounded bg-gray-700 px-2.5 py-2 text-sm text-slate-100 opacity-60 transition-opacity hover:opacity-100 active:opacity-100 ui-open:opacity-100",
+            "grid w-full select-none grid-cols-[min-content,min-content,1fr] items-center justify-items-end gap-2 rounded bg-gray-700 px-2.5 py-2 text-sm opacity-60 transition-opacity hover:opacity-100 active:opacity-100 ui-open:opacity-100",
             buttonClassName,
           )}
         >
@@ -43,22 +45,24 @@ const UiSelect = ({
         <Transition as={Fragment} {...transitionProps}>
           <Listbox.Options
             className={cn(
-              "absolute mt-1 flex w-full flex-col overflow-hidden rounded bg-gray-800 text-sm text-slate-100",
+              "absolute mt-1 flex w-full flex-col overflow-hidden rounded bg-gray-800 text-sm",
               optionsClassName,
             )}
           >
             {options.map((option) => (
               <Listbox.Option
-                className={cn(
-                  "grid cursor-pointer select-none grid-cols-[min-content,min-content,1fr] items-center justify-items-end gap-2 bg-gray-700 px-2.5 py-2 text-slate-100 opacity-60 transition-opacity hover:opacity-100 active:opacity-100 ui-selected:opacity-100",
-                  optionClassName,
-                )}
                 value={option}
                 key={option.id}
+                disabled={option.disabled}
+                className={cn(
+                  "grid cursor-not-allowed select-none grid-cols-[min-content,min-content,1fr] items-center justify-items-end gap-2 bg-gray-700 px-2.5 py-2 opacity-40 transition-opacity ui-selected:opacity-100 ui-not-disabled:cursor-pointer ui-not-disabled:opacity-60 ui-not-disabled:hover:opacity-100 ui-not-disabled:active:opacity-100",
+                  optionClassName,
+                )}
               >
                 {option.Icon}
                 {option.label}
-                <CheckIcon className="col-start-3 opacity-0 ui-open:ui-selected:opacity-100" />
+                <CheckIcon className="col-start-3 hidden ui-open:ui-selected:block" />
+                <CrossIcon className="col-start-3 hidden ui-open:ui-disabled:block" />
               </Listbox.Option>
             ))}
           </Listbox.Options>

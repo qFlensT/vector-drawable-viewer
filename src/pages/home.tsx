@@ -13,6 +13,7 @@ const HomePage = () => {
     {
       label: "USA",
       id: "2",
+      disabled: true,
     },
     { label: "China", id: "3" },
   ];
