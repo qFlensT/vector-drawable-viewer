@@ -55,7 +55,7 @@ const UiSelect = ({
                 key={option.id}
                 disabled={option.disabled}
                 className={cn(
-                  "grid cursor-not-allowed select-none grid-cols-[min-content,min-content,1fr] items-center justify-items-end gap-2 bg-gray-700 px-2.5 py-2 opacity-40 transition-opacity ui-selected:opacity-100 ui-not-disabled:cursor-pointer ui-not-disabled:opacity-60 ui-not-disabled:hover:opacity-100 ui-not-disabled:active:opacity-100",
+                  "grid cursor-not-allowed select-none grid-cols-[min-content,min-content,1fr] items-center justify-items-end gap-2 bg-gray-700 px-2.5 py-2 opacity-60 transition-opacity ui-selected:opacity-100 ui-disabled:opacity-40 ui-not-disabled:cursor-pointer ui-not-disabled:hover:opacity-100 ui-not-disabled:active:opacity-100",
                   optionClassName,
                 )}
               >
