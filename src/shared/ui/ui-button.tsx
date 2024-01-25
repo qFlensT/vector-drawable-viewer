@@ -14,10 +14,10 @@ const UiButton = ({ className, variant, ...props }: UiButtonProps) => {
       className={cn(
         "flex h-min w-min select-none items-center gap-1 rounded px-4 py-1 text-slate-100 transition-[opacity,transform] hover:opacity-90 active:scale-95 active:opacity-90",
         {
-          primary: "bg-blue-500",
-          success: "bg-green-500",
-          warning: "bg-orange-500",
-          danger: "bg-rose-600",
+          primary: "bg-blue-600",
+          success: "bg-emerald-600",
+          warning: "bg-amber-600",
+          danger: "bg-rose-700",
           neutral: "bg-gray-700 ",
         }[variant],
         className,
