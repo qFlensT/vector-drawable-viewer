@@ -36,7 +36,7 @@ export const SplitViewLayout = ({
   };
 
   return (
-    <div className={cn("flex h-full gap-2", className)}>
+    <div className={cn("flex h-full", className)}>
       <aside
         className="h-full overflow-x-auto"
         style={{ width: `${leftWidth}px` }}
@@ -47,7 +47,7 @@ export const SplitViewLayout = ({
         onMouseDown={startResizing}
         className="h-full w-1.5 cursor-ew-resize border-r-2 border-gray-700 bg-gray-700/0 transition-colors hover:bg-gray-700 active:bg-gray-700"
       ></div>
-      <section className="h-full overflow-x-auto">{right}</section>
+      <section className="flex-grow overflow-x-auto">{right}</section>
     </div>
   );
 };
