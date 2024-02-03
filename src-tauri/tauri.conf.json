@@ -11,7 +11,10 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false,
+      "fs": {
+        "all": true,
+        "scope": ["*"]
+      },
       "shell": {
         "all": false,
         "open": true
