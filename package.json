@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tauri dev",
-    "build": "tauri build"
+    "build": "tauri build",
+    "test": "cd src-tauri && cargo test"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
