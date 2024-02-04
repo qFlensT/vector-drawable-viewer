@@ -10,16 +10,6 @@
     "version": "0.0.0"
   },
   "tauri": {
-    "allowlist": {
-      "fs": {
-        "all": true,
-        "scope": ["*"]
-      },
-      "shell": {
-        "all": false,
-        "open": true
-      }
-    },
     "bundle": {
       "active": true,
       "targets": "all",
