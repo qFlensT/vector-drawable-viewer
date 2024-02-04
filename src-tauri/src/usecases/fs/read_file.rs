@@ -1,13 +1,26 @@
 use std::{fs::File, io::Read, path::Path};
 
+use crate::usecases::utils::base64::base64_encode;
+
+#[tauri::command]
 pub fn read_file(path: &Path) -> Result<Vec<u8>, String> {
+    println!("Reading file: {:?}", path);
+
     let mut buffer: Vec<u8> = Vec::with_capacity(0);
     let mut file = File::open(path).map_err(|err| err.to_string())?;
 
     file.read_to_end(&mut buffer)
         .map_err(|err| err.to_string())?;
 
+    println!("Read {} bytes", buffer.len());
+
     Ok(buffer)
+}
+
+#[tauri::command]
+pub fn read_as_base64(path: &Path) -> Result<String, String> {
+    let data = read_file(path)?;
+    Ok(base64_encode(data))
 }
 
 #[cfg(test)]
