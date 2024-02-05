@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { cn } from "../lib/utils";
+import { cn } from "../lib/utils/cn";
 
 type UiButtonVariant = "primary" | "success" | "warning" | "danger" | "neutral";
 

@@ -1,5 +1,5 @@
 import { MouseEventHandler, ReactNode, useState } from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../lib/utils/cn";
 
 export type SplitViewLayoutProps = {
   left: ReactNode;

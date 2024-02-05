@@ -1,5 +1,5 @@
 import { Tab } from "@headlessui/react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../lib/utils/cn";
 
 export type TabRoutes = {
   tabName: string;

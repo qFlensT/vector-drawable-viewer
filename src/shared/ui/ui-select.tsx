@@ -1,5 +1,5 @@
 import { Fragment, ReactNode } from "react";
-import { cn } from "../lib/utils";
+import { cn } from "../lib/utils/cn";
 import { Listbox, Transition } from "@headlessui/react";
 import ArrowIcon from "./assets/svg/arrow.svg?react";
 import CheckIcon from "./assets/svg/check.svg?react";

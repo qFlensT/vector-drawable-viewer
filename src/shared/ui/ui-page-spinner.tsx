@@ -1,5 +1,5 @@
 import UiSpinner from "./ui-spinner";
-import { cn } from "../lib/utils";
+import { cn } from "../lib/utils/cn";
 
 const UiPageSpinner = ({
   className,
