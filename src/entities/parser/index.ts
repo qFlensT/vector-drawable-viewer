@@ -1,15 +1,12 @@
 import { getAllFilesInDirectory } from "../../shared/lib/fs/get-all-files-in-directory";
 import { readFileAsBase64 } from "../../shared/lib/fs/read-file";
-import { base64Decode } from "../../shared/lib/utils/base64";
 import { FileInfo, ImageType } from "./types";
 
 class ParsedImage {
   private __fileInfo: FileInfo;
-  private __base64Data: string;
 
-  constructor(fileInfo: FileInfo, base64Data: string) {
+  constructor(fileInfo: FileInfo) {
     this.__fileInfo = fileInfo;
-    this.__base64Data = base64Data;
   }
 
   public get fileName() {
@@ -24,16 +21,15 @@ class ParsedImage {
     return this.__fileInfo.absolutePath;
   }
 
-  public get bytes() {
-    return base64Decode(this.__base64Data);
-  }
-
-  public get base64() {
-    return this.__base64Data;
+  public base64() {
+    console.log("reading base");
+    const base = readFileAsBase64(this.__fileInfo.absolutePath);
+    console.log("base readed");
+    return base;
   }
 
   public async dataURI() {
-    return `data:image/${this.__fileInfo.fileType};base64,${this.__base64Data}`;
+    return `data:image/${this.__fileInfo.fileType};base64,${await this.base64()}`;
   }
 }
 
@@ -71,18 +67,8 @@ export class ImageParser {
 
     if (amount) filePaths = filePaths.slice(0, amount);
 
-    return Promise.allSettled(
-      filePaths.map(async (filePath) => {
-        try {
-          console.log("File reading");
-          return new ParsedImage(
-            ImageParser.__getFileInfo(filePath),
-            await readFileAsBase64(filePath),
-          );
-        } catch (e) {
-          throw { error: e, filePath };
-        }
-      }),
+    return filePaths.map(
+      (filePath) => new ParsedImage(ImageParser.__getFileInfo(filePath)),
     );
   }
 
