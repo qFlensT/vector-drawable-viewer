@@ -10,6 +10,12 @@
     "version": "0.0.0"
   },
   "tauri": {
+    "allowlist": {
+      "protocol": {
+        "asset": true,
+        "assetScope": ["**"]
+      }
+    },
     "bundle": {
       "active": true,
       "targets": "all",
@@ -23,7 +29,7 @@
       ]
     },
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost"
     },
     "windows": [
       {
