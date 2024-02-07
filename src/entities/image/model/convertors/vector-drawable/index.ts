@@ -2,7 +2,7 @@ import { readFileAsString } from "../../../../../shared/lib/fs/read-file";
 import { base64Encode } from "../../../../../shared/lib/utils/base64";
 import { ImageInfo, ImageType } from "../../types";
 import { Convertor, ConvertorClass, ImageBase } from "../convertors";
-import { transform } from "vector-drawable-svg";
+import { convertVectorDrawableToSvg } from "./svg-convert";
 
 export const VectorDrawableConvertor: ConvertorClass = class
   implements Convertor
@@ -20,7 +20,9 @@ export const VectorDrawableConvertor: ConvertorClass = class
   }
 
   private async __toSvg(): Promise<string> {
-    return transform(await readFileAsString(this.__imageInfo.absolutePath));
+    return convertVectorDrawableToSvg(
+      await readFileAsString(this.__imageInfo.absolutePath),
+    );
   }
 
   public static get supportedConvertations() {
