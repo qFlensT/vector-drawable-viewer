@@ -11,7 +11,8 @@ fn main() {
         .invoke_handler(generate_handler![
             usecases::fs::exists::exists,
             usecases::fs::read_file::read_file,
-            usecases::fs::read_file::read_as_base64,
+            usecases::fs::read_file::read_file_as_string,
+            usecases::fs::read_file::read_file_as_base64,
             usecases::fs::write_file::write_file,
             usecases::fs::write_file::write_from_base64,
             usecases::fs::get_all_files_in_directory::get_all_files_in_directory,

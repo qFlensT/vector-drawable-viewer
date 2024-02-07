@@ -6,8 +6,6 @@ use crate::usecases::utils::base64::base64_encode;
 
 #[tauri::command]
 pub async fn read_file(path: &Path) -> Result<Vec<u8>, String> {
-    println!("Reading file: {:?}", path);
-
     let mut buffer: Vec<u8> = Vec::new();
     let mut file = File::open(path).await.map_err(|err| err.to_string())?;
 
@@ -15,13 +13,17 @@ pub async fn read_file(path: &Path) -> Result<Vec<u8>, String> {
         .await
         .map_err(|err| err.to_string())?;
 
-    println!("Read {} bytes", buffer.len());
-
     Ok(buffer)
 }
 
 #[tauri::command]
-pub async fn read_as_base64(path: &Path) -> Result<String, String> {
+pub async fn read_file_as_string(path: &Path) -> Result<String, String> {
+    let data = read_file(path).await?;
+    Ok(String::from_utf8_lossy(data.as_slice()).to_string())
+}
+
+#[tauri::command]
+pub async fn read_file_as_base64(path: &Path) -> Result<String, String> {
     let data = read_file(path).await?;
     Ok(base64_encode(data).await)
 }
@@ -57,7 +59,7 @@ mod tests {
         let test_data = b"Hello, world!";
         file.write_all(test_data).await?;
 
-        let base64_data = read_as_base64(&file_path).await?;
+        let base64_data = read_file_as_base64(&file_path).await?;
 
         let encoded_data = base64_encode(test_data.to_vec()).await;
         assert_eq!(base64_data, encoded_data);
