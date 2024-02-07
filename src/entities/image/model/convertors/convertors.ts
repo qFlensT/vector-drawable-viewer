@@ -1,5 +1,5 @@
 import { ImageInfo, ImageType } from "../types";
-import { VectorDrawableConvertor } from "./vector-drawable/vector-drawable";
+import { VectorDrawableConvertor } from "./vector-drawable/index";
 
 export const CONVERTORS = new Map<ImageType, ConvertorClass>([
   [ImageType.VectorDrawable, VectorDrawableConvertor],
