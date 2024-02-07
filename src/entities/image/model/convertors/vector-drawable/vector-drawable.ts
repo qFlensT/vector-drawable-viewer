@@ -1,8 +1,7 @@
-import { createRoutesFromChildren } from "react-router-dom";
-import { readFileAsString } from "../../../../shared/lib/fs/read-file";
-import { base64Encode } from "../../../../shared/lib/utils/base64";
-import { ImageInfo, ImageType } from "../types";
-import { Convertor, ConvertorClass, ImageBase } from "./convertors";
+import { readFileAsString } from "../../../../../shared/lib/fs/read-file";
+import { base64Encode } from "../../../../../shared/lib/utils/base64";
+import { ImageInfo, ImageType } from "../../types";
+import { Convertor, ConvertorClass, ImageBase } from "../convertors";
 import { transform } from "vector-drawable-svg";
 
 export const VectorDrawableConvertor: ConvertorClass = class
@@ -30,7 +29,6 @@ export const VectorDrawableConvertor: ConvertorClass = class
 
   public async convert(to: ImageType): Promise<ImageInfo> {
     throw new Error("Method not implemented.");
-    return { ...this.__imageInfo, srcContent: "", convertedTo: to };
   }
 
   public async convertToNative() {
