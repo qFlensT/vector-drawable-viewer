@@ -17,6 +17,28 @@ function extractAttributes(
   );
 }
 
+function convertHexColor(argb: string) {
+  const digits = argb.replace(/^#/, "");
+
+  if (digits.length !== 4 && digits.length !== 8) {
+    return argb;
+  }
+
+  let red, green, blue, alpha;
+  if (digits.length === 4) {
+    alpha = digits[0];
+    red = digits[1];
+    green = digits[2];
+    blue = digits[3];
+  } else {
+    alpha = digits.substr(0, 2);
+    red = digits.substr(2, 2);
+    green = digits.substr(4, 2);
+    blue = digits.substr(6, 2);
+  }
+  return "#" + red + green + blue + alpha;
+}
+
 // Функция для обработки элемента path
 function processPathElement(element: Element): string {
   const pathAttrs = extractAttributes(element, [
@@ -42,10 +64,10 @@ function processPathElement(element: Element): string {
           pathElement += ` d="${value}"`;
           break;
         case "fillColor":
-          pathElement += ` fill="${value || "none"}"`;
+          pathElement += ` fill="${convertHexColor(value) || "none"}"`;
           break;
-        case "strokeColor": // Используйте 'stroke', а не 'strokeColor'
-          pathElement += ` stroke="${value}"`;
+        case "strokeColor":
+          pathElement += ` stroke="${convertHexColor(value)}"`;
           break;
         case "strokeWidth":
           pathElement += ` stroke-width="${value}"`;
